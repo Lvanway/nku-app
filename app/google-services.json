@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "650224443871",
+    "firebase_url": "https://nku-app-95f71.firebaseio.com",
+    "project_id": "nku-app-95f71",
+    "storage_bucket": "nku-app-95f71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650224443871:android:4f08144d0062932a",
+        "android_client_info": {
+          "package_name": "com.fourfifteen.group.nku_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650224443871-o069l6dd8vfdnt8jv19acf559sp3sofd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fourfifteen.group.nku_app",
+            "certificate_hash": "b1c79b7966f5c513ff9a7b61310e799d95549961"
+          }
+        },
+        {
+          "client_id": "650224443871-bvb6gcqjpru3umav9f0on12pfjs2hk45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLuDJXdZB36tHXhv_6jh19a2JSQRTtGdo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650224443871-bvb6gcqjpru3umav9f0on12pfjs2hk45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
