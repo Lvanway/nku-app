@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     public ProgressDialog mProgressDialog;
 
+    private TextView mLoginHeaderTextView;
     private TextView mStatusTextView;
     private TextView mDetailTextView;
     private EditText mEmailField;
@@ -74,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_login);
 
         // Views
+        mLoginHeaderTextView = findViewById(R.id.titleText);
         mStatusTextView = findViewById(R.id.status);
         mDetailTextView = findViewById(R.id.detail);
         mEmailField = findViewById(R.id.fieldEmail);
@@ -82,8 +84,6 @@ public class LoginActivity extends AppCompatActivity implements
         // Buttons
         findViewById(R.id.emailSignInButton).setOnClickListener(this);
         findViewById(R.id.emailCreateAccountButton).setOnClickListener(this);
-        findViewById(R.id.signOutButton).setOnClickListener(this);
-        findViewById(R.id.verifyEmailButton).setOnClickListener(this);
 
         // [START initialize_auth]
         // Initialize Firebase Auth
@@ -180,7 +180,7 @@ public class LoginActivity extends AppCompatActivity implements
         onRestart();
     }
 
-    private void sendEmailVerification() {
+    /*private void sendEmailVerification() {
         // Disable button
         findViewById(R.id.verifyEmailButton).setEnabled(false);
 
@@ -209,7 +209,7 @@ public class LoginActivity extends AppCompatActivity implements
                     }
                 });
         // [END send_email_verification]
-    }
+    }*/
 
     private boolean validateForm() {
         boolean valid = true;
@@ -226,8 +226,11 @@ public class LoginActivity extends AppCompatActivity implements
         if (TextUtils.isEmpty(password)) {
             mPasswordField.setError("Required.");
             valid = false;
+        } else if (password.length() < 8) {
+            mPasswordField.setError("Must be at least 8 characters.");
+            valid = false;
         } else {
-            mPasswordField.setError(null);
+                mPasswordField.setError(null);
         }
 
         return valid;
@@ -236,36 +239,33 @@ public class LoginActivity extends AppCompatActivity implements
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
+            mLoginHeaderTextView.setText(getString(R.string.signed_in));
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             findViewById(R.id.emailPasswordButtons).setVisibility(View.GONE);
             findViewById(R.id.emailPasswordFields).setVisibility(View.GONE);
-            findViewById(R.id.signedInButtons).setVisibility(View.VISIBLE);
 
-            findViewById(R.id.verifyEmailButton).setEnabled(!user.isEmailVerified());
+            finish();
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
 
             findViewById(R.id.emailPasswordButtons).setVisibility(View.VISIBLE);
             findViewById(R.id.emailPasswordFields).setVisibility(View.VISIBLE);
-            findViewById(R.id.signedInButtons).setVisibility(View.GONE);
         }
     }
 
     @Override
     public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.emailCreateAccountButton) {
-            createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.emailSignInButton) {
-            signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.signOutButton) {
-            signOut();
-        } else if (i == R.id.verifyEmailButton) {
-            sendEmailVerification();
+        switch (v.getId()) {
+            case R.id.emailCreateAccountButton:
+                createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+            case R.id.emailSignInButton:
+                signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
         }
     }
 }
