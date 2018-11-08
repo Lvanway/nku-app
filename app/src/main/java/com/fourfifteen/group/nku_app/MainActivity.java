@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     Button calendarButton;
@@ -20,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         calendarButton = (Button) findViewById(R.id.calendarButton);
@@ -33,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
+
+                        if(menuItem.getItemId() == R.id.sign_out) {
+                            FirebaseAuth.getInstance().signOut();
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                        }
 
 
                         // Add code here to update the UI based on the item selected
@@ -63,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+
+            case R.id.sign_out:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                FirebaseAuth.getInstance().signOut();
                 return true;
         }
         return super.onOptionsItemSelected(item);
