@@ -16,7 +16,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button calendarButton;
     private DrawerLayout mDrawerLayout;
@@ -27,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.calendarButton).setOnClickListener(this);
+        findViewById(R.id.tasksButton).setOnClickListener(this);
+
         calendarButton = (Button) findViewById(R.id.calendarButton);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -51,15 +55,6 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-        // Capture calendarButton clicks
-        calendarButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                // Start NewActivity.class
-                Intent myIntent = new Intent(MainActivity.this,
-                        CalendarActivity.class);
-                startActivity(myIntent);
-            }
-        });
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
@@ -84,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.calendarButton:
+                intent = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            case R.id.tasksButton:
+                intent = new Intent(MainActivity.this, TasksActivity.class);
+                startActivity(intent);
+        }
+    }
 
 }
