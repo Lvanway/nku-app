@@ -55,5 +55,7 @@
     <string name="verify_email">Verify email</string>
     <string name="signed_in">Signed in!</string>
     <string name="title_activity_maps">Map</string>
+    <string name="calendar">Calendar</string>
+    <string name="tasks">Tasks</string>
 
 </resources>

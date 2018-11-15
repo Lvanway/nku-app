@@ -10,13 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button calendarButton;
+
     private DrawerLayout mDrawerLayout;
 
 
@@ -26,10 +25,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.calendarButton).setOnClickListener(this);
-        findViewById(R.id.tasksButton).setOnClickListener(this);
-
-        calendarButton = (Button) findViewById(R.id.calendarButton);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
@@ -40,18 +35,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
+                        switch (menuItem.getItemId()) {
 
-                        if(menuItem.getItemId() == R.id.sign_out) {
-                            FirebaseAuth.getInstance().signOut();
-                            finish();
-                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                        }
+                            case R.id.sign_out:
+                                FirebaseAuth.getInstance().signOut();
+                                finish();
+                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                return true;
 
-                        if (menuItem.getItemId() == R.id.googleMap) {
+                            case R.id.googleMap:
+                                Intent mapIntent = new Intent(MainActivity.this, MapsActivity.class);
+                                startActivity(mapIntent);
+                                return true;
 
-                            Intent mapIntent = new Intent(MainActivity.this, MapsActivity.class);
-                            startActivity(mapIntent);
+                            case R.id.calendar:
+                                Intent calendarIntent = new Intent(MainActivity.this, CalendarActivity.class);
+                                startActivity(calendarIntent);
+                                return true;
+
+                            case R.id.tasks:
+                                Intent tasksIntent = new Intent(MainActivity.this, TasksActivity.class);
+                                startActivity(tasksIntent);
+                                return true;
+
                         }
 
 
@@ -76,6 +83,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
 
+            case R.id.googleMap:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+
             case R.id.sign_out:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 FirebaseAuth.getInstance().signOut();
@@ -87,16 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Intent intent;
-        switch (v.getId()) {
-            case R.id.calendarButton:
-                intent = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(intent);
-                return;
-            case R.id.tasksButton:
-                intent = new Intent(MainActivity.this, TasksActivity.class);
-                startActivity(intent);
-                return;
-        }
+
     }
 
 }
