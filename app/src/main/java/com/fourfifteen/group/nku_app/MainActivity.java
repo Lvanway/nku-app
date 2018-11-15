@@ -7,14 +7,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -48,6 +46,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             finish();
                             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                             startActivity(intent);
+                        }
+
+                        if (menuItem.getItemId() == R.id.googleMap) {
+
+                            Intent mapIntent = new Intent(MainActivity.this, MapsActivity.class);
+                            startActivity(mapIntent);
                         }
 
 
@@ -87,9 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.calendarButton:
                 intent = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent);
+                return;
             case R.id.tasksButton:
                 intent = new Intent(MainActivity.this, TasksActivity.class);
                 startActivity(intent);
+                return;
         }
     }
 

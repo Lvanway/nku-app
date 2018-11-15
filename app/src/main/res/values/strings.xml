@@ -9,7 +9,7 @@
     <string name="loading">Loading…</string>
     <string name="auth_failed">Authentication failed</string>
     <string name="parking_text">Parking</string>
-    <string name="campus_map">Map of Campus</string>
+    <string name="campus_map">Map</string>
     <string name="reminders">Reminders</string>
     <string name="nku_directory">NKU directory</string>
     <string name="safety">Safety</string>
@@ -54,5 +54,6 @@
     <string name="hint_password">Password</string>
     <string name="verify_email">Verify email</string>
     <string name="signed_in">Signed in!</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
