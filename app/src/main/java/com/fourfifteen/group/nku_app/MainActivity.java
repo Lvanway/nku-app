@@ -13,11 +13,14 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    private final LinkedList<String> mWordList = new LinkedList<>();
     private DrawerLayout mDrawerLayout;
-
+//    private RecyclerView mRecyclerView;
+//    private WordListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//
+////        FloatingActionButton fab = findViewById(R.id.fab);
+////        fab.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                int wordListSize = mWordList.size();
+////                mWordList.addLast("+ Word " + wordListSize);
+////                mRecyclerView.getAdapter().notifyItemInserted(wordListSize);
+////                mRecyclerView.smoothScrollToPosition(wordListSize);
+////            }
+////        });
+//
+////        // Put initial data into the word list.
+////        for (int i = 0; i < 20; i++) {
+////            mWordList.addLast("Word " + i);
+////        }
+//
+////        mRecyclerView = findViewById(R.id.recyclerview);
+////        mAdapter = new WordListAdapter(this, mWordList);
+////        mRecyclerView.setAdapter(mAdapter);
+////        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//    }
+
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -59,14 +89,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 startActivity(tasksIntent);
                                 return true;
 
+                            case R.id.directory:
+                                Intent directoryIntent = new Intent(MainActivity.this, DirectorySearchActivity.class);
+                                startActivity(directoryIntent);
+                                return true;
+
                         }
-
-
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
                         return true;
                     }
+
+
                 });
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
@@ -92,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FirebaseAuth.getInstance().signOut();
                 return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 

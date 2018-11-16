@@ -19,8 +19,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="C:\Users\James.Kennedy\Downloads\nku-app-Jacob-s-Branch\nku-app-Jacob-s-Branch\app\src\main\res\drawable-xxhdpi\ic_menu_test.png" />
-                                      <entry key="outputName" value="ic_menu_test" />
+                                      <entry key="imageAsset" value="C:\Users\James.Kennedy\Documents\nku-app-master\nku-app-master\app\src\main\ic_reminders-web.png" />
+                                      <entry key="outputName" value="ic_reminders_web" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,7 +33,7 @@
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
                                       <entry key="foregroundLayerName" value="ic_launcher_foreground" />
-                                      <entry key="outputName" value="ic_menu_test" />
+                                      <entry key="outputName" value="ic_car" />
                                     </map>
                                   </option>
                                 </PersistentState>

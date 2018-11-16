@@ -26,6 +26,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".TasksActivity" />
+        <activity android:name=".DirectorySearchActivity" />
+        <activity android:name=".DirectoryActivity" />
+        <activity android:name=".details" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
