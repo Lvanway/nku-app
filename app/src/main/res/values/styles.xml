@@ -47,4 +47,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="NavTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#1a1916</item>
+        <item name="colorPrimaryDark">#f9f355</item>
+        <item name="colorAccent">#000000</item>
+    </style>
+
+
+
 </resources>

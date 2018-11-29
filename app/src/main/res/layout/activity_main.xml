@@ -11,25 +11,26 @@
     >
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/mainactivitypic" />
+
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="?android:attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        />
-
-        <android.support.constraint.ConstraintLayout
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="#ffffff"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-
-        </android.support.constraint.ConstraintLayout>
 
     </FrameLayout>
 
@@ -42,7 +43,11 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu= "@menu/menu_main" >
+        app:menu= "@menu/menu_main"
+        app:headerLayout = "@layout/nav_header"
+
+        >
+
 
     </android.support.design.widget.NavigationView>
 
