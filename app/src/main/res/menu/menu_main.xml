@@ -3,6 +3,14 @@
 
     <group android:checkableBehavior="single">
 
+
+        <item
+            android:id="@+id/home"
+            android:title="Home"
+            android:icon = "@drawable/ic_school_black_24dp"
+            />
+
+
         <item
             android:id="@+id/parking"
             android:title="@string/parking_text"
@@ -34,23 +42,6 @@
             android:icon="@drawable/ic_group_black_24dp"
             />
 
-        <item
-            android:id="@+id/safety"
-            android:title="@string/safety"
-            android:icon="@drawable/ic_menu_test"
-            />
-
-        <item
-            android:id="@+id/email"
-            android:title="@string/email"
-            android:icon="@drawable/ic_menu_test"
-            />
-
-        <item
-            android:id="@+id/misc"
-            android:title="@string/miscellaneous"
-            android:icon="@drawable/ic_menu_test"
-            />
 
         <item
             android:id="@+id/sign_out"

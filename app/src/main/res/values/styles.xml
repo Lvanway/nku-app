@@ -49,9 +49,9 @@
 
     <style name="NavTheme">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#1a1916</item>
-        <item name="colorPrimaryDark">#f9f355</item>
-        <item name="colorAccent">#000000</item>
+        <item name="colorPrimary">#CFD8DC</item>
+        <item name="colorPrimaryDark">#FFFFFF</item>
+        <item name="colorAccent">#FFEB3B</item>
     </style>
 
 

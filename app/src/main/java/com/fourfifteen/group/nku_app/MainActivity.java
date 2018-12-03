@@ -96,6 +96,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 startActivity(directoryIntent);
                                 return true;
 
+                            case R.id.parking:
+                                Intent parkingIntent = new Intent(MainActivity.this, Parking.class);
+                                startActivity(parkingIntent);
+                                return true;
+
+                            case R.id.home:
+                                Intent home = new Intent(MainActivity.this, MainActivity.class);
+                                startActivity(home);
+                                return true;
                         }
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
