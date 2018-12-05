@@ -35,8 +35,9 @@ public class Parking extends AppCompatActivity {
     private int whichGarage = 0;
     private boolean forApp = false;
 
-    private Calendar rightNow;
+    private UpdateSpotsEveryMinute updater = new UpdateSpotsEveryMinute();
 
+    private Calendar rightNow;
 
 
     @Override
@@ -53,7 +54,7 @@ public class Parking extends AppCompatActivity {
 
 
                         int id = menuItem.getItemId();
-                        switch(id){
+                        switch (id) {
 
                             case R.id.sign_out:
                                 FirebaseAuth.getInstance().signOut();
@@ -94,8 +95,6 @@ public class Parking extends AppCompatActivity {
                         }
 
 
-
-
                         menuItem.setChecked(true);
 
                         mDrawerLayout.closeDrawers();
@@ -133,12 +132,11 @@ public class Parking extends AppCompatActivity {
         //first garage by default
         final TextView garageSize = findViewById(R.id.textView_NumberSpots);
         determineSpots(whichGarage, garages[whichGarage], garageSizes[whichGarage]);
-
+        updater.start(whichGarage, garages[whichGarage], garageSizes[whichGarage]);
 
         final Button prevGarageBtn = findViewById(R.id.button_garagePrevious);
         final Button nextGarageBtn = findViewById(R.id.button_garageNext);
         final Button refreshBtn = findViewById(R.id.button_refresh);
-
 
 
         refreshBtn.setOnClickListener(new View.OnClickListener() {
@@ -153,22 +151,23 @@ public class Parking extends AppCompatActivity {
         nextGarageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (whichGarage < 2){
+                if (whichGarage < 2) {
 
-                    if(!prevGarageBtn.isEnabled()) {
+                    if (!prevGarageBtn.isEnabled()) {
                         prevGarageBtn.setEnabled(true);
                     }
                     whichGarage++; //to figure out which garage we be on
                     determineSpots(whichGarage, garages[whichGarage], garageSizes[whichGarage]);
 
-
+                    UpdateSpotsEveryMinute updater = new UpdateSpotsEveryMinute();
+                    updater.stop();
+                    updater.start(whichGarage,garages[whichGarage], garageSizes[whichGarage]);
 
                     //set the name of the garage
                     final TextView garageName = findViewById(R.id.textView_garageName);
                     garageName.setText(garages[whichGarage]);
 
-                }
-                else {
+                } else {
                     nextGarageBtn.setEnabled(false);
                 }
             }
@@ -180,7 +179,7 @@ public class Parking extends AppCompatActivity {
             public void onClick(View v) {
                 if (whichGarage > 0) {
 
-                    if(!nextGarageBtn.isEnabled()){
+                    if (!nextGarageBtn.isEnabled()) {
                         nextGarageBtn.setEnabled(true);
                     }
 
@@ -188,27 +187,16 @@ public class Parking extends AppCompatActivity {
                     determineSpots(whichGarage, garages[whichGarage], garageSizes[whichGarage]);
 
 
-
-
-
                     //set the name of the garage
                     final TextView garageName = findViewById(R.id.textView_garageName);
                     garageName.setText(garages[whichGarage]);
 
-                }
-                else {
+                } else {
                     prevGarageBtn.setEnabled(false);
                 }
                 //move onto the next garage with features  and update/refresh
             }
         });
-
-
-
-
-
-
-
 
 
     }
@@ -385,4 +373,47 @@ public class Parking extends AppCompatActivity {
 
     }
 
+    public class UpdateSpotsEveryMinute {
+
+        long delay = 10 * 1000; // delay in milliseconds  --- every 10 seconds
+        LoopTask task = new LoopTask();
+        Timer timer = new Timer("TaskName");
+
+
+        private int whichGarage;
+        private String garageName;
+        private int garageSize;
+
+        public void start(int whichGarage, String garageName, int garageSize) {
+            this.whichGarage = whichGarage;
+            this.garageName = garageName;
+            this.garageSize = garageSize;
+
+            timer.cancel();
+            //timer.purge();
+
+            timer = new Timer("TaskName");
+            Date executionDate = new Date(); // no params = now
+            timer.scheduleAtFixedRate(task, executionDate, delay);
+        }
+
+        public void stop(){
+            timer.cancel();
+            timer.purge();
+        }
+
+        private class LoopTask extends TimerTask {
+            public void run() {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        determineSpots(whichGarage, garageName, garageSize);
+                        System.out.println("this message prints every 10 segundos bitches");
+                    }
+                });
+
+            }
+        }
+    }
 }
