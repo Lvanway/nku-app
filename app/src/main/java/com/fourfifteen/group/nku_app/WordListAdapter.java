@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordViewHolder> {
 
@@ -50,7 +51,14 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
             } else if (element.equals("Joseph Wernke")) {
                 Intent intent2 = new Intent(view.getContext(), details.class).putExtra("title", "Joseph Wernke").putExtra("desc", "wernkej11@nku.edu");
                 view.getContext().startActivity(intent2);
+            } else if (element.equals("Micheal Clark")) {
+                Intent intent2 = new Intent(view.getContext(), details.class).putExtra("title", "Micheal Clark").putExtra("desc", "clarkm4@nku.edu");
+                view.getContext().startActivity(intent2);
+            } else {
+                Intent intent2 = new Intent(view.getContext(), details.class).putExtra("title", "No Results").putExtra("desc", "");
+                view.getContext().startActivity(intent2);
             }
+
         }
     }
 
@@ -61,14 +69,14 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     }
 
     @Override
-    public WordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WordListAdapter.WordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View mItemView = mInflater.inflate(R.layout.wordlist_item, parent, false);
         return new WordViewHolder(mItemView, this);
     }
 
     @Override
-    public void onBindViewHolder(WordViewHolder holder, int position) {
+    public void onBindViewHolder(WordListAdapter.WordViewHolder holder, int position) {
 
         String mCurrent = mWordList.get(position);
         holder.wordItemView.setText(mCurrent);

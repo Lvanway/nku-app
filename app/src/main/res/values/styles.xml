@@ -50,7 +50,7 @@
     <style name="NavTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#CFD8DC</item>
-        <item name="colorPrimaryDark">#FFFFFF</item>
+        <item name="colorPrimaryDark">#FAFAFA</item>
         <item name="colorAccent">#FFEB3B</item>
     </style>
 

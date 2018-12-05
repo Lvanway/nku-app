@@ -33,31 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mDrawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-////        FloatingActionButton fab = findViewById(R.id.fab);
-////        fab.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                int wordListSize = mWordList.size();
-////                mWordList.addLast("+ Word " + wordListSize);
-////                mRecyclerView.getAdapter().notifyItemInserted(wordListSize);
-////                mRecyclerView.smoothScrollToPosition(wordListSize);
-////            }
-////        });
-//
-////        // Put initial data into the word list.
-////        for (int i = 0; i < 20; i++) {
-////            mWordList.addLast("Word " + i);
-////        }
-//
-////        mRecyclerView = findViewById(R.id.recyclerview);
-////        mAdapter = new WordListAdapter(this, mWordList);
-////        mRecyclerView.setAdapter(mAdapter);
-////        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//    }
-
 
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {

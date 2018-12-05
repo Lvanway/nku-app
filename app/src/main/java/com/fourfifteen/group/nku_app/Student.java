@@ -30,7 +30,7 @@ class Student {
         this.email = email;
     }
 
-    public void setStudent(String firstName, String lastName, String email) {
+    public void setStudent(String firstName, String lastName, String email){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

@@ -38,13 +38,6 @@ public class Parking extends AppCompatActivity {
     private Calendar rightNow;
 
 
-//    private final Button prevGarageBtn = findViewById(R.id.button_previous);
-
-
-//    Parking() {
-//
-//    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +45,6 @@ public class Parking extends AppCompatActivity {
         setContentView(R.layout.parking);
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
-        final Intent parkingIntent = new Intent(this, Parking.class);
-        final Intent homeIntent = new Intent(this, MainActivity.class);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -144,8 +135,12 @@ public class Parking extends AppCompatActivity {
         determineSpots(whichGarage, garages[whichGarage], garageSizes[whichGarage]);
 
 
-
+        final Button prevGarageBtn = findViewById(R.id.button_garagePrevious);
+        final Button nextGarageBtn = findViewById(R.id.button_garageNext);
         final Button refreshBtn = findViewById(R.id.button_refresh);
+
+
+
         refreshBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,16 +149,42 @@ public class Parking extends AppCompatActivity {
             }
         });
 
-        final Button nextGarageBtn = findViewById(R.id.button_garageNext);
+
         nextGarageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (whichGarage < 2){
 
-//                    if(!prevGarageBtn.isEnabled()) {
-//                        prevGarageBtn.setEnabled(true);
-//                    }
+                    if(!prevGarageBtn.isEnabled()) {
+                        prevGarageBtn.setEnabled(true);
+                    }
                     whichGarage++; //to figure out which garage we be on
+                    determineSpots(whichGarage, garages[whichGarage], garageSizes[whichGarage]);
+
+
+
+                    //set the name of the garage
+                    final TextView garageName = findViewById(R.id.textView_garageName);
+                    garageName.setText(garages[whichGarage]);
+
+                }
+                else {
+                    nextGarageBtn.setEnabled(false);
+                }
+            }
+        });
+
+
+        prevGarageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (whichGarage > 0) {
+
+                    if(!nextGarageBtn.isEnabled()){
+                        nextGarageBtn.setEnabled(true);
+                    }
+
+                    whichGarage--; //to figure out which garage we be on
                     determineSpots(whichGarage, garages[whichGarage], garageSizes[whichGarage]);
 
 
@@ -176,42 +197,11 @@ public class Parking extends AppCompatActivity {
 
                 }
                 else {
-                    nextGarageBtn.setEnabled(false);
-
-
+                    prevGarageBtn.setEnabled(false);
                 }
                 //move onto the next garage with features  and update/refresh
             }
         });
-
-
-//        prevGarageBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (whichGarage > 0) {
-//
-//                    if(!nextGarageBtn.isEnabled()){
-//                        nextGarageBtn.setEnabled(true);
-//                    }
-//
-//                    whichGarage--; //to figure out which garage we be on
-//                    determineSpots(whichGarage, garages[whichGarage], garageSizes[whichGarage]);
-//
-//
-//
-//
-//
-//                    //set the name of the garage
-//                    final TextView garageName = findViewById(R.id.textView_garageName);
-//                    garageName.setText(garages[whichGarage]);
-//
-//                }
-//                else {
-//                    prevGarageBtn.setEnabled(false);
-//                }
-//                //move onto the next garage with features  and update/refresh
-//            }
-//        });
 
 
 
