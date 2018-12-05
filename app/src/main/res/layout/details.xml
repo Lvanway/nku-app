@@ -3,42 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+
+        android:background="#FFBE1F"
+
+        />
+
 
     <TextView
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="69dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="53dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="title"
+        android:textColor="#292929"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/desc"
+        app:layout_constraintBottom_toTopOf="@+id/emailButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/desc"
         android:layout_width="385dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:text="desc"
+        android:textColor="#292929"
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintBottom_toBottomOf="@+id/emailButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/emailButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="352dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="348dp"
         android:text="Send Email"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/desc" />
+        app:layout_constraintStart_toStartOf="@+id/desc"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 </android.support.constraint.ConstraintLayout>
