@@ -66,6 +66,9 @@
     <string name="prev_button">Previous</string>
     <string name="previous_button">previous</string>
 
+    <string name="current_date">December 2018</string>
+    <string name="last_date">31</string>
+
 
 
 </resources>
