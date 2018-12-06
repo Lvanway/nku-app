@@ -68,6 +68,7 @@
 
     <string name="current_date">December 2018</string>
     <string name="last_date">31</string>
+    <string name="MarkerParkingAvailability">Available parking spots:</string>
 
 
 </resources>
