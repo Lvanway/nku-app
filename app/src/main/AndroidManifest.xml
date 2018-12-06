@@ -38,13 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
         <activity android:name=".TasksActivity" />
-
-
-=======
         <activity android:name=".EventActivity" />
->>>>>>> 48cbca5228e3b79dbba0f4f77101db912a0d8fa6
+
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
