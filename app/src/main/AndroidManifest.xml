@@ -24,22 +24,27 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity" />
-        <activity android:name=".Parking"/>
+        <activity android:name=".Parking" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".DirectorySearchActivity" />
         <activity android:name=".DirectoryActivity" />
-        <activity android:name=".details" android:parentActivityName=".DirectorySearchActivity"/>
+        <activity
+            android:name=".details"
+            android:parentActivityName=".DirectorySearchActivity" />
         <activity android:name=".LoginActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".TasksActivity" />
 
 
+=======
+        <activity android:name=".EventActivity" />
+>>>>>>> 48cbca5228e3b79dbba0f4f77101db912a0d8fa6
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -59,7 +64,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.fourfifteen.group.nku_app.MainActivity" />
-
         </activity>
 
         <uses-library

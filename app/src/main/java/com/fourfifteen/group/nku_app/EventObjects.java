@@ -27,4 +27,10 @@ public class EventObjects {
     public Date getDate() {
         return date;
     }
+    public String getTime() {
+        return time;
+    }
+    public String getEventType() {
+        return eventType;
+    }
 }

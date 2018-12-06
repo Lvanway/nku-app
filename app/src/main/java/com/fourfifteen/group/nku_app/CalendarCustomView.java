@@ -43,7 +43,7 @@ public class CalendarCustomView extends LinearLayout{
         setUpCalendarAdapter();
         setPreviousButtonClickEvent();
         setNextButtonClickEvent();
-        setGridCellClickEvents();
+        //setGridCellClickEvents();
         setAddEventButtonClickEvent();
         Log.d(TAG, "I need to call this method");
     }
@@ -82,19 +82,19 @@ public class CalendarCustomView extends LinearLayout{
         addEventButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), EventActivity.class);
+                Intent intent = new Intent(v.getContext(), TasksActivity.class);
                 v.getContext().startActivity(intent);
             }
         });
     }
-    private void setGridCellClickEvents(){
+    /* private void setGridCellClickEvents(){
         calendarGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(context, "Clicked " + position, Toast.LENGTH_LONG).show();
             }
         });
-    }
+    } */
     private void setUpCalendarAdapter(){
         List<Date> dayValueInCells = new ArrayList<Date>();
         mQuery = new DatabaseQuery(context);
