@@ -409,7 +409,6 @@ public class Parking extends AppCompatActivity {
                     @Override
                     public void run() {
                         determineSpots(whichGarage, garageName, garageSize);
-                        System.out.println("this message prints every 10 segundos bitches");
                     }
                 });
 
