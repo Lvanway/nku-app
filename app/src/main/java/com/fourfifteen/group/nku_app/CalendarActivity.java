@@ -39,10 +39,11 @@ public class CalendarActivity extends AppCompatActivity {
         databaseObject.getDbConnection();
          mQuery = new DatabaseQuery(getApplicationContext());
          List<EventObjects> mEvents = mQuery.getAllFutureEvents();
-         databaseObject.removeEvent("12-7-2018");
+        //databaseObject.removeEvent("12-10-2018");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         CalendarCustomView mView = (CalendarCustomView) findViewById(R.id.calendar);
+        mEvents = mQuery.getAllFutureEvents();
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -120,9 +121,6 @@ public class CalendarActivity extends AppCompatActivity {
 
 
 
-       /* super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
-        CalendarCustomView mView = (CalendarCustomView) findViewById(R.id.custom_calendar); */
 
 
 

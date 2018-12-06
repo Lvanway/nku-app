@@ -58,17 +58,16 @@
     <string name="calendar">Calendar</string>
     <string name="tasks">Tasks</string>
 
-    <string name = "next_garage_button"> Next  </string>
-    <string name = "generic_date"> M/D/Y  </string>
-    <string name = "generic_holder"> Temp Holding Text  </string>
-    <string name = "generic_holder_garage_name"> Garage Name  </string>
-    <string name = "refresh_button"> Refresh  </string>
+    <string name="next_garage_button"> Next  </string>
+    <string name="generic_date"> M/D/Y  </string>
+    <string name="generic_holder"> Temp Holding Text  </string>
+    <string name="generic_holder_garage_name"> Garage Name  </string>
+    <string name="refresh_button"> Refresh  </string>
     <string name="prev_button">Previous</string>
     <string name="previous_button">previous</string>
 
     <string name="current_date">December 2018</string>
     <string name="last_date">31</string>
-
 
 
 </resources>
