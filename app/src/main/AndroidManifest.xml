@@ -26,7 +26,6 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Parking"/>
         <activity android:name=".CalendarActivity" />
-        <activity android:name=".TasksActivity" />
         <activity android:name=".DirectorySearchActivity" />
         <activity android:name=".DirectoryActivity" />
         <activity android:name=".details" android:parentActivityName=".DirectorySearchActivity"/>
@@ -38,6 +37,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TasksActivity" />
 
 
 

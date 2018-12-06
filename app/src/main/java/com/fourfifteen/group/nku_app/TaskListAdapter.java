@@ -1,4 +1,4 @@
-package com.fourfifteen.group.nku_app;
+/*package com.fourfifteen.group.nku_app;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -19,15 +19,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskVi
         mInflater = LayoutInflater.from(context);
         this.mTaskList = taskList;
     }
-
-    class TaskViewHolder extends RecyclerView.ViewHolder {
-        public final TextView taskItemView;
-        final TaskListAdapter mAdapter;
-        public TaskViewHolder(View itemView, TaskListAdapter adapter) {
-            super (itemView);
-            taskItemView = itemView.findViewById(R.id.task);
-            this.mAdapter = adapter;
-        }
     }
 
     public TaskListAdapter.TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,3 +37,4 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskVi
         return mTaskList.size();
     }
 }
+*/

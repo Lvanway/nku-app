@@ -18,7 +18,7 @@ public class DatabaseQuery extends DatabaseObject{
     public List<EventObjects> getAllFutureEvents(){
         Date dateToday = new Date();
         List<EventObjects> events = new ArrayList<>();
-        String query = "select * from events";
+        String query = "select * from 'events'";
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
         if(cursor.moveToFirst()){
             do{
