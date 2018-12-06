@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:textSize="30dp"
+        android:textSize="20dp"
         />
 
     <Button
@@ -26,6 +26,16 @@
         android:layout_alignBaseline="@+id/taskTextView"
         android:layout_alignEnd="@+id/taskTextView"
         android:onClick="clearTasks"
-        android:text="Complete" />
+        android:text="Done" />
+
+    <Button
+        android:id="@+id/addDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/taskTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="90dp"
+        android:onClick="addCalendarEvent"
+        android:text="Date" />
 
 </RelativeLayout>

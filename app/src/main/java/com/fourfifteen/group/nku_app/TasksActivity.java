@@ -29,6 +29,7 @@ package com.fourfifteen.group.nku_app;
 
         import java.util.ArrayList;
         import java.util.LinkedList;
+        import java.util.List;
 
 public class TasksActivity extends AppCompatActivity {
 
@@ -38,6 +39,8 @@ public class TasksActivity extends AppCompatActivity {
     private ListView mTaskListView;
     private ArrayAdapter<String> mAdapter;
     private DrawerLayout mDrawerLayout;
+    private Database mEventHelper;
+    private DatabaseQuery databaseQuery;
 
     FloatingActionButton addTaskButton;
     private RecyclerView mRecyclerView;
@@ -46,6 +49,7 @@ public class TasksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_tasks);
+        mEventHelper = new Database(TasksActivity.this);
         mHelper = new TaskStorageHelper(TasksActivity.this);
         mTaskListView = (ListView)findViewById(R.id.taskList);
         addTaskButton = findViewById (R.id.addTaskButton);
@@ -207,6 +211,28 @@ public class TasksActivity extends AppCompatActivity {
         View parent = (View) view.getParent();
         TextView taskTextView = (TextView) parent.findViewById(R.id.taskTextView);
         String task = String.valueOf(taskTextView.getText());
+        final EditText tasksClearCalendarEvent = new EditText(TasksActivity.this);
+
+        AlertDialog alertDialog = new AlertDialog.Builder(TasksActivity.this).create();
+        alertDialog.setTitle("Clear Event");
+        alertDialog.setMessage("Enter date: ");
+        alertDialog.setView(tasksClearCalendarEvent);
+        alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Okay", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DatabaseObject dbObj = new DatabaseObject (TasksActivity.this);
+                dbObj.getDbConnection ();
+                String date = String.valueOf(tasksClearCalendarEvent.getText());
+                dbObj.removeEvent(date);
+            }
+        });
+
+        alertDialog.create();
+        alertDialog.show();
+
+
+
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.delete(TaskStorage.TaskEntry.TABLE,
                 TaskStorage.TaskEntry.COL_TASK_TITLE + " = ?",
@@ -216,7 +242,107 @@ public class TasksActivity extends AppCompatActivity {
 
     }
 
-    @Override
+    public void addCalendarEvent(View view) {
+
+        View parent = (View) view.getParent ();
+        TextView taskTextView = (TextView) parent.findViewById (R.id.taskTextView);
+        String task = String.valueOf (taskTextView.getText ());
+        SQLiteDatabase db = mEventHelper.getWritableDatabase ();
+        final EditText tasksAddCalendarEventDescription = new EditText (TasksActivity.this);
+        AlertDialog alertDialog = new AlertDialog.Builder (TasksActivity.this).create ();
+        alertDialog.setTitle ("Create Event");
+        alertDialog.setMessage ("Enter description: ");
+        alertDialog.setView (tasksAddCalendarEventDescription);
+        alertDialog.setButton (DialogInterface.BUTTON_POSITIVE, "Add", new DialogInterface.OnClickListener () {
+
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                final EditText tasksAddCalendarEventDate = new EditText (TasksActivity.this);
+                AlertDialog alertDialog = new AlertDialog.Builder (TasksActivity.this).create ();
+                alertDialog.setTitle ("Create Event");
+                alertDialog.setMessage ("Enter date: ");
+                alertDialog.setView (tasksAddCalendarEventDate);
+                alertDialog.setButton (DialogInterface.BUTTON_POSITIVE, "Add", new DialogInterface.OnClickListener () {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final EditText tasksAddCalendarEventTime = new EditText (TasksActivity.this);
+                        AlertDialog alertDialog = new AlertDialog.Builder (TasksActivity.this).create ();
+                        alertDialog.setTitle ("Create Event");
+                        alertDialog.setMessage ("Enter time: ");
+                        alertDialog.setView (tasksAddCalendarEventTime);
+                        alertDialog.setButton (DialogInterface.BUTTON_POSITIVE, "Add", new DialogInterface.OnClickListener () {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                final EditText tasksAddCalendarEventType = new EditText (TasksActivity.this);
+                                AlertDialog alertDialog = new AlertDialog.Builder (TasksActivity.this).create ();
+                                alertDialog.setTitle ("Create Event");
+                                alertDialog.setMessage ("Enter type: ");
+                                alertDialog.setView (tasksAddCalendarEventType);
+                                alertDialog.setButton (DialogInterface.BUTTON_POSITIVE, "Add", new DialogInterface.OnClickListener () {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        String description = String.valueOf (tasksAddCalendarEventDescription.getText ());
+                                        String date = String.valueOf (tasksAddCalendarEventDate.getText ());
+                                        String type = String.valueOf (tasksAddCalendarEventType.getText());
+                                        String time = String.valueOf (tasksAddCalendarEventTime.getText ());
+                                        DatabaseObject dbObj = new DatabaseObject (TasksActivity.this);
+                                        dbObj.getDbConnection ();
+                                        dbObj.insertValues (description, date, time, type);
+                                    }
+                                });
+
+                                alertDialog.setButton (DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener () {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel ();
+                                    }
+                                });
+
+                                alertDialog.create();
+                                alertDialog.show();
+
+                            }
+
+                        });
+
+                        alertDialog.setButton (DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener () {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel ();
+                            }
+                        });
+
+                        alertDialog.create();
+                        alertDialog.show();
+                    }
+                });
+
+                alertDialog.setButton (DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener () {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel ();
+                    }
+                });
+
+                alertDialog.create();
+                alertDialog.show();
+
+            }
+        });
+
+        alertDialog.setButton (DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener () {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel ();
+            }
+        });
+
+        alertDialog.create();
+        alertDialog.show();
+
+    }
+
+        @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
